@@ -1,9 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors");
 const app = express();
-
-app.get("/", (req, res, next) => {
+const service = require("./service/render");
+app.use("/add-user", service.addUser);
+app.use("/", (req, res, next) => {
   res.send("<h1>welcome from giftboom!!</h1>");
   next();
 });
